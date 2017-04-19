@@ -1,0 +1,2668 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-ionic-angular/node_modules/ionic-angular/umd/index.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-ionic-angular">npmtest-ionic-angular (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-ionic-angular/node_modules/ionic-angular/umd/index.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">1.96% <small>(10 / 511)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">18.75% <small>(3 / 16)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">15.38% <small>(2 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">1.98% <small>(10 / 506)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> » <a href="index.html">node-npmtest-ionic-angular/node_modules/ionic-angular/umd/</a> » index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+716
+717
+718
+719
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+799
+800
+801
+802
+803
+804
+805
+806
+807
+808
+809
+810
+811
+812
+813
+814
+815
+816</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * Import Angular
+ */
+(function (factory) {
+    <span class="missing-if-branch" title="else path not taken">E</span>if (typeof module === "object" &amp;&amp; typeof module.exports === "object") {
+        var v = factory(require, exports);
+<span class="cstat-no" title="statement not covered">        if (v !== undefined) <span class="cstat-no" title="statement not covered">module.exports = v;</span></span>
+    }
+    else <span class="cstat-no" title="statement not covered">if (typeof define === "function" &amp;&amp; define.amd) {</span>
+<span class="cstat-no" title="statement not covered">        define(["require", "exports", "@angular/core", "@angular/common", "@angular/platform-browser", "@angular/forms", "@angular/common", "./components/action-sheet/action-sheet-controller", "./components/alert/alert-controller", "./components/app/app", "./components/app/app-root", "./config/config", "./navigation/deep-linker", "./platform/dom-controller", "./util/events", "./util/form", "./gestures/gesture-controller", "./tap-click/haptic", "./platform/keyboard", "./components/loading/loading-controller", "./components/menu/menu-controller", "./components/modal/modal-controller", "./util/module-loader", "./util/ng-module-loader", "./components/picker/picker-controller", "./platform/platform", "./platform/platform-registry", "./components/popover/popover-controller", "./tap-click/tap-click", "./components/toast/toast-controller", "./config/mode-registry", "./transitions/transition-controller", "./navigation/url-serializer", "./components/action-sheet/action-sheet.module", "./components/alert/alert.module", "./components/app/app.module", "./components/avatar/avatar.module", "./components/backdrop/backdrop.module", "./components/badge/badge.module", "./components/button/button.module", "./components/card/card.module", "./components/checkbox/checkbox.module", "./components/chip/chip.module", "./components/click-block/click-block.module", "./components/content/content.module", "./components/datetime/datetime.module", "./components/fab/fab.module", "./components/grid/grid.module", "./components/icon/icon.module", "./components/img/img.module", "./components/infinite-scroll/infinite-scroll.module", "./components/input/input.module", "./components/item/item.module", "./components/label/label.module", "./components/list/list.module", "./components/loading/loading.module", "./components/menu/menu.module", "./components/modal/modal.module", "./components/nav/nav.module", "./components/navbar/navbar.module", "./components/note/note.module", "./components/option/option.module", "./components/picker/picker.module", "./components/popover/popover.module", "./components/radio/radio.module", "./components/range/range.module", "./components/refresher/refresher.module", "./components/scroll/scroll.module", "./components/searchbar/searchbar.module", "./components/segment/segment.module", "./components/select/select.module", "./components/show-hide-when/show-hide-when.module", "./components/slides/slides.module", "./components/spinner/spinner.module", "./components/split-pane/split-pane.module", "./components/tabs/tabs.module", "./components/thumbnail/thumbnail.module", "./components/toast/toast.module", "./components/toggle/toggle.module", "./components/toolbar/toolbar.module", "./components/typography/typography.module", "./components/virtual-scroll/virtual-scroll.module", "./components/action-sheet/action-sheet.module", "./components/alert/alert.module", "./components/app/app.module", "./components/avatar/avatar.module", "./components/backdrop/backdrop.module", "./components/badge/badge.module", "./components/button/button.module", "./components/card/card.module", "./components/checkbox/checkbox.module", "./components/chip/chip.module", "./components/click-block/click-block.module", "./components/content/content.module", "./components/datetime/datetime.module", "./components/fab/fab.module", "./components/grid/grid.module", "./components/icon/icon.module", "./components/img/img.module", "./components/infinite-scroll/infinite-scroll.module", "./components/input/input.module", "./components/item/item.module", "./components/label/label.module", "./components/list/list.module", "./components/loading/loading.module", "./components/menu/menu.module", "./components/modal/modal.module", "./components/nav/nav.module", "./components/navbar/navbar.module", "./components/note/note.module", "./components/option/option.module", "./components/picker/picker.module", "./components/popover/popover.module", "./components/radio/radio.module", "./components/range/range.module", "./components/refresher/refresher.module", "./components/scroll/scroll.module", "./components/searchbar/searchbar.module", "./components/segment/segment.module", "./components/select/select.module", "./components/show-hide-when/show-hide-when.module", "./components/slides/slides.module", "./components/spinner/spinner.module", "./components/split-pane/split-pane.module", "./components/tabs/tabs.module", "./components/thumbnail/thumbnail.module", "./components/toast/toast.module", "./components/toggle/toggle.module", "./components/toolbar/toolbar.module", "./components/typography/typography.module", "./components/virtual-scroll/virtual-scroll.module", "./components/action-sheet/action-sheet", "./components/action-sheet/action-sheet-controller", "./components/alert/alert-controller", "./components/alert/alert", "./components/app/app", "./components/avatar/avatar", "./components/backdrop/backdrop", "./components/badge/badge", "./components/button/button", "./components/card/card", "./components/card/card-content", "./components/card/card-header", "./components/card/card-title", "./components/checkbox/checkbox", "./components/chip/chip", "./components/click-block/click-block", "./components/content/content", "./components/datetime/datetime", "./components/fab/fab", "./components/fab/fab-container", "./components/fab/fab-list", "./components/grid/col", "./components/grid/grid", "./components/grid/row", "./components/ion", "./components/icon/icon", "./components/img/img", "./components/infinite-scroll/infinite-scroll", "./components/infinite-scroll/infinite-scroll-content", "./components/input/input", "./components/app/app-root", "./components/item/item", "./components/item/item-content", "./components/item/item-divider", "./components/item/item-group", "./components/item/item-reorder", "./components/item/reorder", "./components/item/item-sliding", "./components/item/item-options", "./components/label/label", "./components/list/list", "./components/list/list-header", "./components/loading/loading", "./components/loading/loading-controller", "./components/menu/menu", "./components/menu/menu-close", "./components/menu/menu-controller", "./components/menu/menu-toggle", "./components/menu/menu-types", "./components/modal/modal", "./components/modal/modal-controller", "./components/nav/nav", "./components/nav/nav-pop", "./components/nav/nav-pop-anchor", "./components/nav/nav-push", "./components/nav/nav-push-anchor", "./components/navbar/navbar", "./components/input/native-input", "./components/input/next-input", "./components/note/note", "./components/option/option", "./components/nav/overlay-portal", "./components/picker/picker", "./components/picker/picker-controller", "./components/popover/popover", "./components/popover/popover-controller", "./components/radio/radio-button", "./components/radio/radio-group", "./components/range/range", "./components/range/range-knob", "./components/refresher/refresher", "./components/refresher/refresher-content", "./components/scroll/scroll", "./components/searchbar/searchbar", "./components/segment/segment", "./components/segment/segment-button", "./components/select/select", "./components/show-hide-when/show-when", "./components/show-hide-when/display-when", "./components/show-hide-when/hide-when", "./components/slides/slide", "./components/slides/slides", "./components/spinner/spinner", "./components/split-pane/split-pane", "./components/tabs/tab", "./components/tabs/tab-button", "./components/tabs/tab-highlight", "./components/tabs/tabs", "./tap-click/tap-click", "./components/toast/toast", "./components/toast/toast-controller", "./components/toggle/toggle", "./components/toolbar/toolbar-base", "./components/toolbar/toolbar", "./components/toolbar/toolbar-header", "./components/toolbar/toolbar-footer", "./components/toolbar/toolbar-item", "./components/toolbar/toolbar-title", "./components/thumbnail/thumbnail", "./components/typography/typography", "./components/virtual-scroll/virtual-scroll", "./config/config", "./platform/dom-controller", "./platform/platform", "./tap-click/haptic", "./navigation/deep-linker", "./navigation/ionic-page", "./navigation/nav-controller", "./navigation/nav-controller-base", "./navigation/nav-params", "./navigation/nav-util", "./navigation/url-serializer", "./navigation/view-controller", "./components/action-sheet/action-sheet-component", "./components/alert/alert-component", "./components/loading/loading-component", "./components/modal/modal-component", "./components/picker/picker-component", "./components/picker/picker-column", "./components/popover/popover-component", "./components/toast/toast-component", "./gestures/drag-gesture", "./gestures/gesture", "./gestures/slide-edge-gesture", "./gestures/slide-gesture", "./gestures/gesture-controller", "./util/events", "./util/ionic-error-handler", "./platform/keyboard", "./util/form", "./util/util", "./animations/animation", "./transitions/page-transition", "./transitions/transition", "./platform/platform-registry", "./config/mode-registry", "./gestures/gesture-config"], factory);</span>
+    }
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var core_1 = require("@angular/core");
+<span class="cstat-no" title="statement not covered">    var common_1 = require("@angular/common");</span>
+<span class="cstat-no" title="statement not covered">    var platform_browser_1 = require("@angular/platform-browser");</span>
+<span class="cstat-no" title="statement not covered">    var forms_1 = require("@angular/forms");</span>
+<span class="cstat-no" title="statement not covered">    var common_2 = require("@angular/common");</span>
+    /**
+     * Import Providers
+     */
+<span class="cstat-no" title="statement not covered">    var action_sheet_controller_1 = require("./components/action-sheet/action-sheet-controller");</span>
+<span class="cstat-no" title="statement not covered">    var alert_controller_1 = require("./components/alert/alert-controller");</span>
+<span class="cstat-no" title="statement not covered">    var app_1 = require("./components/app/app");</span>
+<span class="cstat-no" title="statement not covered">    var app_root_1 = require("./components/app/app-root");</span>
+<span class="cstat-no" title="statement not covered">    var config_1 = require("./config/config");</span>
+<span class="cstat-no" title="statement not covered">    var deep_linker_1 = require("./navigation/deep-linker");</span>
+<span class="cstat-no" title="statement not covered">    var dom_controller_1 = require("./platform/dom-controller");</span>
+<span class="cstat-no" title="statement not covered">    var events_1 = require("./util/events");</span>
+<span class="cstat-no" title="statement not covered">    var form_1 = require("./util/form");</span>
+<span class="cstat-no" title="statement not covered">    var gesture_controller_1 = require("./gestures/gesture-controller");</span>
+<span class="cstat-no" title="statement not covered">    var haptic_1 = require("./tap-click/haptic");</span>
+<span class="cstat-no" title="statement not covered">    var keyboard_1 = require("./platform/keyboard");</span>
+<span class="cstat-no" title="statement not covered">    var loading_controller_1 = require("./components/loading/loading-controller");</span>
+<span class="cstat-no" title="statement not covered">    var menu_controller_1 = require("./components/menu/menu-controller");</span>
+<span class="cstat-no" title="statement not covered">    var modal_controller_1 = require("./components/modal/modal-controller");</span>
+<span class="cstat-no" title="statement not covered">    var module_loader_1 = require("./util/module-loader");</span>
+<span class="cstat-no" title="statement not covered">    var ng_module_loader_1 = require("./util/ng-module-loader");</span>
+<span class="cstat-no" title="statement not covered">    var picker_controller_1 = require("./components/picker/picker-controller");</span>
+<span class="cstat-no" title="statement not covered">    var platform_1 = require("./platform/platform");</span>
+<span class="cstat-no" title="statement not covered">    var platform_registry_1 = require("./platform/platform-registry");</span>
+<span class="cstat-no" title="statement not covered">    var popover_controller_1 = require("./components/popover/popover-controller");</span>
+<span class="cstat-no" title="statement not covered">    var tap_click_1 = require("./tap-click/tap-click");</span>
+<span class="cstat-no" title="statement not covered">    var toast_controller_1 = require("./components/toast/toast-controller");</span>
+<span class="cstat-no" title="statement not covered">    var mode_registry_1 = require("./config/mode-registry");</span>
+<span class="cstat-no" title="statement not covered">    var transition_controller_1 = require("./transitions/transition-controller");</span>
+<span class="cstat-no" title="statement not covered">    var url_serializer_1 = require("./navigation/url-serializer");</span>
+    /**
+     * Import Modules
+     */
+<span class="cstat-no" title="statement not covered">    var action_sheet_module_1 = require("./components/action-sheet/action-sheet.module");</span>
+<span class="cstat-no" title="statement not covered">    var alert_module_1 = require("./components/alert/alert.module");</span>
+<span class="cstat-no" title="statement not covered">    var app_module_1 = require("./components/app/app.module");</span>
+<span class="cstat-no" title="statement not covered">    var avatar_module_1 = require("./components/avatar/avatar.module");</span>
+<span class="cstat-no" title="statement not covered">    var backdrop_module_1 = require("./components/backdrop/backdrop.module");</span>
+<span class="cstat-no" title="statement not covered">    var badge_module_1 = require("./components/badge/badge.module");</span>
+<span class="cstat-no" title="statement not covered">    var button_module_1 = require("./components/button/button.module");</span>
+<span class="cstat-no" title="statement not covered">    var card_module_1 = require("./components/card/card.module");</span>
+<span class="cstat-no" title="statement not covered">    var checkbox_module_1 = require("./components/checkbox/checkbox.module");</span>
+<span class="cstat-no" title="statement not covered">    var chip_module_1 = require("./components/chip/chip.module");</span>
+<span class="cstat-no" title="statement not covered">    var click_block_module_1 = require("./components/click-block/click-block.module");</span>
+<span class="cstat-no" title="statement not covered">    var content_module_1 = require("./components/content/content.module");</span>
+<span class="cstat-no" title="statement not covered">    var datetime_module_1 = require("./components/datetime/datetime.module");</span>
+<span class="cstat-no" title="statement not covered">    var fab_module_1 = require("./components/fab/fab.module");</span>
+<span class="cstat-no" title="statement not covered">    var grid_module_1 = require("./components/grid/grid.module");</span>
+<span class="cstat-no" title="statement not covered">    var icon_module_1 = require("./components/icon/icon.module");</span>
+<span class="cstat-no" title="statement not covered">    var img_module_1 = require("./components/img/img.module");</span>
+<span class="cstat-no" title="statement not covered">    var infinite_scroll_module_1 = require("./components/infinite-scroll/infinite-scroll.module");</span>
+<span class="cstat-no" title="statement not covered">    var input_module_1 = require("./components/input/input.module");</span>
+<span class="cstat-no" title="statement not covered">    var item_module_1 = require("./components/item/item.module");</span>
+<span class="cstat-no" title="statement not covered">    var label_module_1 = require("./components/label/label.module");</span>
+<span class="cstat-no" title="statement not covered">    var list_module_1 = require("./components/list/list.module");</span>
+<span class="cstat-no" title="statement not covered">    var loading_module_1 = require("./components/loading/loading.module");</span>
+<span class="cstat-no" title="statement not covered">    var menu_module_1 = require("./components/menu/menu.module");</span>
+<span class="cstat-no" title="statement not covered">    var modal_module_1 = require("./components/modal/modal.module");</span>
+<span class="cstat-no" title="statement not covered">    var nav_module_1 = require("./components/nav/nav.module");</span>
+<span class="cstat-no" title="statement not covered">    var navbar_module_1 = require("./components/navbar/navbar.module");</span>
+<span class="cstat-no" title="statement not covered">    var note_module_1 = require("./components/note/note.module");</span>
+<span class="cstat-no" title="statement not covered">    var option_module_1 = require("./components/option/option.module");</span>
+<span class="cstat-no" title="statement not covered">    var picker_module_1 = require("./components/picker/picker.module");</span>
+<span class="cstat-no" title="statement not covered">    var popover_module_1 = require("./components/popover/popover.module");</span>
+<span class="cstat-no" title="statement not covered">    var radio_module_1 = require("./components/radio/radio.module");</span>
+<span class="cstat-no" title="statement not covered">    var range_module_1 = require("./components/range/range.module");</span>
+<span class="cstat-no" title="statement not covered">    var refresher_module_1 = require("./components/refresher/refresher.module");</span>
+<span class="cstat-no" title="statement not covered">    var scroll_module_1 = require("./components/scroll/scroll.module");</span>
+<span class="cstat-no" title="statement not covered">    var searchbar_module_1 = require("./components/searchbar/searchbar.module");</span>
+<span class="cstat-no" title="statement not covered">    var segment_module_1 = require("./components/segment/segment.module");</span>
+<span class="cstat-no" title="statement not covered">    var select_module_1 = require("./components/select/select.module");</span>
+<span class="cstat-no" title="statement not covered">    var show_hide_when_module_1 = require("./components/show-hide-when/show-hide-when.module");</span>
+<span class="cstat-no" title="statement not covered">    var slides_module_1 = require("./components/slides/slides.module");</span>
+<span class="cstat-no" title="statement not covered">    var spinner_module_1 = require("./components/spinner/spinner.module");</span>
+<span class="cstat-no" title="statement not covered">    var split_pane_module_1 = require("./components/split-pane/split-pane.module");</span>
+<span class="cstat-no" title="statement not covered">    var tabs_module_1 = require("./components/tabs/tabs.module");</span>
+<span class="cstat-no" title="statement not covered">    var thumbnail_module_1 = require("./components/thumbnail/thumbnail.module");</span>
+<span class="cstat-no" title="statement not covered">    var toast_module_1 = require("./components/toast/toast.module");</span>
+<span class="cstat-no" title="statement not covered">    var toggle_module_1 = require("./components/toggle/toggle.module");</span>
+<span class="cstat-no" title="statement not covered">    var toolbar_module_1 = require("./components/toolbar/toolbar.module");</span>
+<span class="cstat-no" title="statement not covered">    var typography_module_1 = require("./components/typography/typography.module");</span>
+<span class="cstat-no" title="statement not covered">    var virtual_scroll_module_1 = require("./components/virtual-scroll/virtual-scroll.module");</span>
+    /**
+     * Export Modules
+     */
+<span class="cstat-no" title="statement not covered">    var action_sheet_module_2 = require("./components/action-sheet/action-sheet.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ActionSheetModule = action_sheet_module_2.ActionSheetModule;</span>
+<span class="cstat-no" title="statement not covered">    var alert_module_2 = require("./components/alert/alert.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.AlertModule = alert_module_2.AlertModule;</span>
+<span class="cstat-no" title="statement not covered">    var app_module_2 = require("./components/app/app.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.AppModule = app_module_2.AppModule;</span>
+<span class="cstat-no" title="statement not covered">    var avatar_module_2 = require("./components/avatar/avatar.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.AvatarModule = avatar_module_2.AvatarModule;</span>
+<span class="cstat-no" title="statement not covered">    var backdrop_module_2 = require("./components/backdrop/backdrop.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.BackdropModule = backdrop_module_2.BackdropModule;</span>
+<span class="cstat-no" title="statement not covered">    var badge_module_2 = require("./components/badge/badge.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.BadgeModule = badge_module_2.BadgeModule;</span>
+<span class="cstat-no" title="statement not covered">    var button_module_2 = require("./components/button/button.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ButtonModule = button_module_2.ButtonModule;</span>
+<span class="cstat-no" title="statement not covered">    var card_module_2 = require("./components/card/card.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.CardModule = card_module_2.CardModule;</span>
+<span class="cstat-no" title="statement not covered">    var checkbox_module_2 = require("./components/checkbox/checkbox.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.CheckboxModule = checkbox_module_2.CheckboxModule;</span>
+<span class="cstat-no" title="statement not covered">    var chip_module_2 = require("./components/chip/chip.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ChipModule = chip_module_2.ChipModule;</span>
+<span class="cstat-no" title="statement not covered">    var click_block_module_2 = require("./components/click-block/click-block.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ClickBlockModule = click_block_module_2.ClickBlockModule;</span>
+<span class="cstat-no" title="statement not covered">    var content_module_2 = require("./components/content/content.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ContentModule = content_module_2.ContentModule;</span>
+<span class="cstat-no" title="statement not covered">    var datetime_module_2 = require("./components/datetime/datetime.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.DateTimeModule = datetime_module_2.DateTimeModule;</span>
+<span class="cstat-no" title="statement not covered">    var fab_module_2 = require("./components/fab/fab.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.FabModule = fab_module_2.FabModule;</span>
+<span class="cstat-no" title="statement not covered">    var grid_module_2 = require("./components/grid/grid.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.GridModule = grid_module_2.GridModule;</span>
+<span class="cstat-no" title="statement not covered">    var icon_module_2 = require("./components/icon/icon.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.IconModule = icon_module_2.IconModule;</span>
+<span class="cstat-no" title="statement not covered">    var img_module_2 = require("./components/img/img.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ImgModule = img_module_2.ImgModule;</span>
+<span class="cstat-no" title="statement not covered">    var infinite_scroll_module_2 = require("./components/infinite-scroll/infinite-scroll.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.InfiniteScrollModule = infinite_scroll_module_2.InfiniteScrollModule;</span>
+<span class="cstat-no" title="statement not covered">    var input_module_2 = require("./components/input/input.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.InputModule = input_module_2.InputModule;</span>
+<span class="cstat-no" title="statement not covered">    var item_module_2 = require("./components/item/item.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ItemModule = item_module_2.ItemModule;</span>
+<span class="cstat-no" title="statement not covered">    var label_module_2 = require("./components/label/label.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.LabelModule = label_module_2.LabelModule;</span>
+<span class="cstat-no" title="statement not covered">    var list_module_2 = require("./components/list/list.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ListModule = list_module_2.ListModule;</span>
+<span class="cstat-no" title="statement not covered">    var loading_module_2 = require("./components/loading/loading.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.LoadingModule = loading_module_2.LoadingModule;</span>
+<span class="cstat-no" title="statement not covered">    var menu_module_2 = require("./components/menu/menu.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.MenuModule = menu_module_2.MenuModule;</span>
+<span class="cstat-no" title="statement not covered">    var modal_module_2 = require("./components/modal/modal.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ModalModule = modal_module_2.ModalModule;</span>
+<span class="cstat-no" title="statement not covered">    var nav_module_2 = require("./components/nav/nav.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavModule = nav_module_2.NavModule;</span>
+<span class="cstat-no" title="statement not covered">    var navbar_module_2 = require("./components/navbar/navbar.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavbarModule = navbar_module_2.NavbarModule;</span>
+<span class="cstat-no" title="statement not covered">    var note_module_2 = require("./components/note/note.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.NoteModule = note_module_2.NoteModule;</span>
+<span class="cstat-no" title="statement not covered">    var option_module_2 = require("./components/option/option.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.OptionModule = option_module_2.OptionModule;</span>
+<span class="cstat-no" title="statement not covered">    var picker_module_2 = require("./components/picker/picker.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.PickerModule = picker_module_2.PickerModule;</span>
+<span class="cstat-no" title="statement not covered">    var popover_module_2 = require("./components/popover/popover.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.PopoverModule = popover_module_2.PopoverModule;</span>
+<span class="cstat-no" title="statement not covered">    var radio_module_2 = require("./components/radio/radio.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.RadioModule = radio_module_2.RadioModule;</span>
+<span class="cstat-no" title="statement not covered">    var range_module_2 = require("./components/range/range.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.RangeModule = range_module_2.RangeModule;</span>
+<span class="cstat-no" title="statement not covered">    var refresher_module_2 = require("./components/refresher/refresher.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.RefresherModule = refresher_module_2.RefresherModule;</span>
+<span class="cstat-no" title="statement not covered">    var scroll_module_2 = require("./components/scroll/scroll.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ScrollModule = scroll_module_2.ScrollModule;</span>
+<span class="cstat-no" title="statement not covered">    var searchbar_module_2 = require("./components/searchbar/searchbar.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.SearchbarModule = searchbar_module_2.SearchbarModule;</span>
+<span class="cstat-no" title="statement not covered">    var segment_module_2 = require("./components/segment/segment.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.SegmentModule = segment_module_2.SegmentModule;</span>
+<span class="cstat-no" title="statement not covered">    var select_module_2 = require("./components/select/select.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.SelectModule = select_module_2.SelectModule;</span>
+<span class="cstat-no" title="statement not covered">    var show_hide_when_module_2 = require("./components/show-hide-when/show-hide-when.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ShowHideWhenModule = show_hide_when_module_2.ShowHideWhenModule;</span>
+<span class="cstat-no" title="statement not covered">    var slides_module_2 = require("./components/slides/slides.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.SlidesModule = slides_module_2.SlidesModule;</span>
+<span class="cstat-no" title="statement not covered">    var spinner_module_2 = require("./components/spinner/spinner.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.SpinnerModule = spinner_module_2.SpinnerModule;</span>
+<span class="cstat-no" title="statement not covered">    var split_pane_module_2 = require("./components/split-pane/split-pane.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.SplitPaneModule = split_pane_module_2.SplitPaneModule;</span>
+<span class="cstat-no" title="statement not covered">    var tabs_module_2 = require("./components/tabs/tabs.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.TabsModule = tabs_module_2.TabsModule;</span>
+<span class="cstat-no" title="statement not covered">    var thumbnail_module_2 = require("./components/thumbnail/thumbnail.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ThumbnailModule = thumbnail_module_2.ThumbnailModule;</span>
+<span class="cstat-no" title="statement not covered">    var toast_module_2 = require("./components/toast/toast.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ToastModule = toast_module_2.ToastModule;</span>
+<span class="cstat-no" title="statement not covered">    var toggle_module_2 = require("./components/toggle/toggle.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ToggleModule = toggle_module_2.ToggleModule;</span>
+<span class="cstat-no" title="statement not covered">    var toolbar_module_2 = require("./components/toolbar/toolbar.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.ToolbarModule = toolbar_module_2.ToolbarModule;</span>
+<span class="cstat-no" title="statement not covered">    var typography_module_2 = require("./components/typography/typography.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.TypographyModule = typography_module_2.TypographyModule;</span>
+<span class="cstat-no" title="statement not covered">    var virtual_scroll_module_2 = require("./components/virtual-scroll/virtual-scroll.module");</span>
+<span class="cstat-no" title="statement not covered">    exports.VirtualScrollModule = virtual_scroll_module_2.VirtualScrollModule;</span>
+    /**
+     * Export Components/Directives
+     */
+<span class="cstat-no" title="statement not covered">    var action_sheet_1 = require("./components/action-sheet/action-sheet");</span>
+<span class="cstat-no" title="statement not covered">    exports.ActionSheet = action_sheet_1.ActionSheet;</span>
+<span class="cstat-no" title="statement not covered">    var action_sheet_controller_2 = require("./components/action-sheet/action-sheet-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.ActionSheetController = action_sheet_controller_2.ActionSheetController;</span>
+<span class="cstat-no" title="statement not covered">    var alert_controller_2 = require("./components/alert/alert-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.AlertController = alert_controller_2.AlertController;</span>
+<span class="cstat-no" title="statement not covered">    var alert_1 = require("./components/alert/alert");</span>
+<span class="cstat-no" title="statement not covered">    exports.Alert = alert_1.Alert;</span>
+<span class="cstat-no" title="statement not covered">    var app_2 = require("./components/app/app");</span>
+<span class="cstat-no" title="statement not covered">    exports.App = app_2.App;</span>
+<span class="cstat-no" title="statement not covered">    var avatar_1 = require("./components/avatar/avatar");</span>
+<span class="cstat-no" title="statement not covered">    exports.Avatar = avatar_1.Avatar;</span>
+<span class="cstat-no" title="statement not covered">    var backdrop_1 = require("./components/backdrop/backdrop");</span>
+<span class="cstat-no" title="statement not covered">    exports.Backdrop = backdrop_1.Backdrop;</span>
+<span class="cstat-no" title="statement not covered">    var badge_1 = require("./components/badge/badge");</span>
+<span class="cstat-no" title="statement not covered">    exports.Badge = badge_1.Badge;</span>
+<span class="cstat-no" title="statement not covered">    var button_1 = require("./components/button/button");</span>
+<span class="cstat-no" title="statement not covered">    exports.Button = button_1.Button;</span>
+<span class="cstat-no" title="statement not covered">    var card_1 = require("./components/card/card");</span>
+<span class="cstat-no" title="statement not covered">    exports.Card = card_1.Card;</span>
+<span class="cstat-no" title="statement not covered">    var card_content_1 = require("./components/card/card-content");</span>
+<span class="cstat-no" title="statement not covered">    exports.CardContent = card_content_1.CardContent;</span>
+<span class="cstat-no" title="statement not covered">    var card_header_1 = require("./components/card/card-header");</span>
+<span class="cstat-no" title="statement not covered">    exports.CardHeader = card_header_1.CardHeader;</span>
+<span class="cstat-no" title="statement not covered">    var card_title_1 = require("./components/card/card-title");</span>
+<span class="cstat-no" title="statement not covered">    exports.CardTitle = card_title_1.CardTitle;</span>
+<span class="cstat-no" title="statement not covered">    var checkbox_1 = require("./components/checkbox/checkbox");</span>
+<span class="cstat-no" title="statement not covered">    exports.Checkbox = checkbox_1.Checkbox;</span>
+<span class="cstat-no" title="statement not covered">    var chip_1 = require("./components/chip/chip");</span>
+<span class="cstat-no" title="statement not covered">    exports.Chip = chip_1.Chip;</span>
+<span class="cstat-no" title="statement not covered">    var click_block_1 = require("./components/click-block/click-block");</span>
+<span class="cstat-no" title="statement not covered">    exports.ClickBlock = click_block_1.ClickBlock;</span>
+<span class="cstat-no" title="statement not covered">    var content_1 = require("./components/content/content");</span>
+<span class="cstat-no" title="statement not covered">    exports.Content = content_1.Content;</span>
+<span class="cstat-no" title="statement not covered">    var datetime_1 = require("./components/datetime/datetime");</span>
+<span class="cstat-no" title="statement not covered">    exports.DateTime = datetime_1.DateTime;</span>
+<span class="cstat-no" title="statement not covered">    var fab_1 = require("./components/fab/fab");</span>
+<span class="cstat-no" title="statement not covered">    exports.FabButton = fab_1.FabButton;</span>
+<span class="cstat-no" title="statement not covered">    var fab_container_1 = require("./components/fab/fab-container");</span>
+<span class="cstat-no" title="statement not covered">    exports.FabContainer = fab_container_1.FabContainer;</span>
+<span class="cstat-no" title="statement not covered">    var fab_list_1 = require("./components/fab/fab-list");</span>
+<span class="cstat-no" title="statement not covered">    exports.FabList = fab_list_1.FabList;</span>
+<span class="cstat-no" title="statement not covered">    var col_1 = require("./components/grid/col");</span>
+<span class="cstat-no" title="statement not covered">    exports.Col = col_1.Col;</span>
+<span class="cstat-no" title="statement not covered">    var grid_1 = require("./components/grid/grid");</span>
+<span class="cstat-no" title="statement not covered">    exports.Grid = grid_1.Grid;</span>
+<span class="cstat-no" title="statement not covered">    var row_1 = require("./components/grid/row");</span>
+<span class="cstat-no" title="statement not covered">    exports.Row = row_1.Row;</span>
+<span class="cstat-no" title="statement not covered">    var ion_1 = require("./components/ion");</span>
+<span class="cstat-no" title="statement not covered">    exports.Ion = ion_1.Ion;</span>
+<span class="cstat-no" title="statement not covered">    var icon_1 = require("./components/icon/icon");</span>
+<span class="cstat-no" title="statement not covered">    exports.Icon = icon_1.Icon;</span>
+<span class="cstat-no" title="statement not covered">    var img_1 = require("./components/img/img");</span>
+<span class="cstat-no" title="statement not covered">    exports.Img = img_1.Img;</span>
+<span class="cstat-no" title="statement not covered">    var infinite_scroll_1 = require("./components/infinite-scroll/infinite-scroll");</span>
+<span class="cstat-no" title="statement not covered">    exports.InfiniteScroll = infinite_scroll_1.InfiniteScroll;</span>
+<span class="cstat-no" title="statement not covered">    var infinite_scroll_content_1 = require("./components/infinite-scroll/infinite-scroll-content");</span>
+<span class="cstat-no" title="statement not covered">    exports.InfiniteScrollContent = infinite_scroll_content_1.InfiniteScrollContent;</span>
+<span class="cstat-no" title="statement not covered">    var input_1 = require("./components/input/input");</span>
+<span class="cstat-no" title="statement not covered">    exports.TextInput = input_1.TextInput;</span>
+<span class="cstat-no" title="statement not covered">    var app_root_2 = require("./components/app/app-root");</span>
+<span class="cstat-no" title="statement not covered">    exports.IonicApp = app_root_2.IonicApp;</span>
+<span class="cstat-no" title="statement not covered">    var item_1 = require("./components/item/item");</span>
+<span class="cstat-no" title="statement not covered">    exports.Item = item_1.Item;</span>
+<span class="cstat-no" title="statement not covered">    var item_content_1 = require("./components/item/item-content");</span>
+<span class="cstat-no" title="statement not covered">    exports.ItemContent = item_content_1.ItemContent;</span>
+<span class="cstat-no" title="statement not covered">    var item_divider_1 = require("./components/item/item-divider");</span>
+<span class="cstat-no" title="statement not covered">    exports.ItemDivider = item_divider_1.ItemDivider;</span>
+<span class="cstat-no" title="statement not covered">    var item_group_1 = require("./components/item/item-group");</span>
+<span class="cstat-no" title="statement not covered">    exports.ItemGroup = item_group_1.ItemGroup;</span>
+<span class="cstat-no" title="statement not covered">    var item_reorder_1 = require("./components/item/item-reorder");</span>
+<span class="cstat-no" title="statement not covered">    exports.ItemReorder = item_reorder_1.ItemReorder;</span>
+<span class="cstat-no" title="statement not covered">    var reorder_1 = require("./components/item/reorder");</span>
+<span class="cstat-no" title="statement not covered">    exports.Reorder = reorder_1.Reorder;</span>
+<span class="cstat-no" title="statement not covered">    var item_sliding_1 = require("./components/item/item-sliding");</span>
+<span class="cstat-no" title="statement not covered">    exports.ItemSliding = item_sliding_1.ItemSliding;</span>
+<span class="cstat-no" title="statement not covered">    var item_options_1 = require("./components/item/item-options");</span>
+<span class="cstat-no" title="statement not covered">    exports.ItemOptions = item_options_1.ItemOptions;</span>
+<span class="cstat-no" title="statement not covered">    var label_1 = require("./components/label/label");</span>
+<span class="cstat-no" title="statement not covered">    exports.Label = label_1.Label;</span>
+<span class="cstat-no" title="statement not covered">    var list_1 = require("./components/list/list");</span>
+<span class="cstat-no" title="statement not covered">    exports.List = list_1.List;</span>
+<span class="cstat-no" title="statement not covered">    var list_header_1 = require("./components/list/list-header");</span>
+<span class="cstat-no" title="statement not covered">    exports.ListHeader = list_header_1.ListHeader;</span>
+<span class="cstat-no" title="statement not covered">    var loading_1 = require("./components/loading/loading");</span>
+<span class="cstat-no" title="statement not covered">    exports.Loading = loading_1.Loading;</span>
+<span class="cstat-no" title="statement not covered">    var loading_controller_2 = require("./components/loading/loading-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.LoadingController = loading_controller_2.LoadingController;</span>
+<span class="cstat-no" title="statement not covered">    var menu_1 = require("./components/menu/menu");</span>
+<span class="cstat-no" title="statement not covered">    exports.Menu = menu_1.Menu;</span>
+<span class="cstat-no" title="statement not covered">    var menu_close_1 = require("./components/menu/menu-close");</span>
+<span class="cstat-no" title="statement not covered">    exports.MenuClose = menu_close_1.MenuClose;</span>
+<span class="cstat-no" title="statement not covered">    var menu_controller_2 = require("./components/menu/menu-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.MenuController = menu_controller_2.MenuController;</span>
+<span class="cstat-no" title="statement not covered">    var menu_toggle_1 = require("./components/menu/menu-toggle");</span>
+<span class="cstat-no" title="statement not covered">    exports.MenuToggle = menu_toggle_1.MenuToggle;</span>
+<span class="cstat-no" title="statement not covered">    var menu_types_1 = require("./components/menu/menu-types");</span>
+<span class="cstat-no" title="statement not covered">    exports.MenuType = menu_types_1.MenuType;</span>
+<span class="cstat-no" title="statement not covered">    var modal_1 = require("./components/modal/modal");</span>
+<span class="cstat-no" title="statement not covered">    exports.Modal = modal_1.Modal;</span>
+<span class="cstat-no" title="statement not covered">    var modal_controller_2 = require("./components/modal/modal-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.ModalController = modal_controller_2.ModalController;</span>
+<span class="cstat-no" title="statement not covered">    var nav_1 = require("./components/nav/nav");</span>
+<span class="cstat-no" title="statement not covered">    exports.Nav = nav_1.Nav;</span>
+<span class="cstat-no" title="statement not covered">    var nav_pop_1 = require("./components/nav/nav-pop");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavPop = nav_pop_1.NavPop;</span>
+<span class="cstat-no" title="statement not covered">    var nav_pop_anchor_1 = require("./components/nav/nav-pop-anchor");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavPopAnchor = nav_pop_anchor_1.NavPopAnchor;</span>
+<span class="cstat-no" title="statement not covered">    var nav_push_1 = require("./components/nav/nav-push");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavPush = nav_push_1.NavPush;</span>
+<span class="cstat-no" title="statement not covered">    var nav_push_anchor_1 = require("./components/nav/nav-push-anchor");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavPushAnchor = nav_push_anchor_1.NavPushAnchor;</span>
+<span class="cstat-no" title="statement not covered">    var navbar_1 = require("./components/navbar/navbar");</span>
+<span class="cstat-no" title="statement not covered">    exports.Navbar = navbar_1.Navbar;</span>
+<span class="cstat-no" title="statement not covered">    var native_input_1 = require("./components/input/native-input");</span>
+<span class="cstat-no" title="statement not covered">    exports.NativeInput = native_input_1.NativeInput;</span>
+<span class="cstat-no" title="statement not covered">    var next_input_1 = require("./components/input/next-input");</span>
+<span class="cstat-no" title="statement not covered">    exports.NextInput = next_input_1.NextInput;</span>
+<span class="cstat-no" title="statement not covered">    var note_1 = require("./components/note/note");</span>
+<span class="cstat-no" title="statement not covered">    exports.Note = note_1.Note;</span>
+<span class="cstat-no" title="statement not covered">    var option_1 = require("./components/option/option");</span>
+<span class="cstat-no" title="statement not covered">    exports.Option = option_1.Option;</span>
+<span class="cstat-no" title="statement not covered">    var overlay_portal_1 = require("./components/nav/overlay-portal");</span>
+<span class="cstat-no" title="statement not covered">    exports.OverlayPortal = overlay_portal_1.OverlayPortal;</span>
+<span class="cstat-no" title="statement not covered">    var picker_1 = require("./components/picker/picker");</span>
+<span class="cstat-no" title="statement not covered">    exports.Picker = picker_1.Picker;</span>
+<span class="cstat-no" title="statement not covered">    var picker_controller_2 = require("./components/picker/picker-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.PickerController = picker_controller_2.PickerController;</span>
+<span class="cstat-no" title="statement not covered">    var popover_1 = require("./components/popover/popover");</span>
+<span class="cstat-no" title="statement not covered">    exports.Popover = popover_1.Popover;</span>
+<span class="cstat-no" title="statement not covered">    var popover_controller_2 = require("./components/popover/popover-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.PopoverController = popover_controller_2.PopoverController;</span>
+<span class="cstat-no" title="statement not covered">    var radio_button_1 = require("./components/radio/radio-button");</span>
+<span class="cstat-no" title="statement not covered">    exports.RadioButton = radio_button_1.RadioButton;</span>
+<span class="cstat-no" title="statement not covered">    var radio_group_1 = require("./components/radio/radio-group");</span>
+<span class="cstat-no" title="statement not covered">    exports.RadioGroup = radio_group_1.RadioGroup;</span>
+<span class="cstat-no" title="statement not covered">    var range_1 = require("./components/range/range");</span>
+<span class="cstat-no" title="statement not covered">    exports.Range = range_1.Range;</span>
+<span class="cstat-no" title="statement not covered">    var range_knob_1 = require("./components/range/range-knob");</span>
+<span class="cstat-no" title="statement not covered">    exports.RangeKnob = range_knob_1.RangeKnob;</span>
+<span class="cstat-no" title="statement not covered">    var refresher_1 = require("./components/refresher/refresher");</span>
+<span class="cstat-no" title="statement not covered">    exports.Refresher = refresher_1.Refresher;</span>
+<span class="cstat-no" title="statement not covered">    var refresher_content_1 = require("./components/refresher/refresher-content");</span>
+<span class="cstat-no" title="statement not covered">    exports.RefresherContent = refresher_content_1.RefresherContent;</span>
+<span class="cstat-no" title="statement not covered">    var scroll_1 = require("./components/scroll/scroll");</span>
+<span class="cstat-no" title="statement not covered">    exports.Scroll = scroll_1.Scroll;</span>
+<span class="cstat-no" title="statement not covered">    var searchbar_1 = require("./components/searchbar/searchbar");</span>
+<span class="cstat-no" title="statement not covered">    exports.Searchbar = searchbar_1.Searchbar;</span>
+<span class="cstat-no" title="statement not covered">    var segment_1 = require("./components/segment/segment");</span>
+<span class="cstat-no" title="statement not covered">    exports.Segment = segment_1.Segment;</span>
+<span class="cstat-no" title="statement not covered">    var segment_button_1 = require("./components/segment/segment-button");</span>
+<span class="cstat-no" title="statement not covered">    exports.SegmentButton = segment_button_1.SegmentButton;</span>
+<span class="cstat-no" title="statement not covered">    var select_1 = require("./components/select/select");</span>
+<span class="cstat-no" title="statement not covered">    exports.Select = select_1.Select;</span>
+<span class="cstat-no" title="statement not covered">    var show_when_1 = require("./components/show-hide-when/show-when");</span>
+<span class="cstat-no" title="statement not covered">    exports.ShowWhen = show_when_1.ShowWhen;</span>
+<span class="cstat-no" title="statement not covered">    var display_when_1 = require("./components/show-hide-when/display-when");</span>
+<span class="cstat-no" title="statement not covered">    exports.DisplayWhen = display_when_1.DisplayWhen;</span>
+<span class="cstat-no" title="statement not covered">    var hide_when_1 = require("./components/show-hide-when/hide-when");</span>
+<span class="cstat-no" title="statement not covered">    exports.HideWhen = hide_when_1.HideWhen;</span>
+<span class="cstat-no" title="statement not covered">    var slide_1 = require("./components/slides/slide");</span>
+<span class="cstat-no" title="statement not covered">    exports.Slide = slide_1.Slide;</span>
+<span class="cstat-no" title="statement not covered">    var slides_1 = require("./components/slides/slides");</span>
+<span class="cstat-no" title="statement not covered">    exports.Slides = slides_1.Slides;</span>
+<span class="cstat-no" title="statement not covered">    var spinner_1 = require("./components/spinner/spinner");</span>
+<span class="cstat-no" title="statement not covered">    exports.Spinner = spinner_1.Spinner;</span>
+<span class="cstat-no" title="statement not covered">    var split_pane_1 = require("./components/split-pane/split-pane");</span>
+<span class="cstat-no" title="statement not covered">    exports.SplitPane = split_pane_1.SplitPane;</span>
+<span class="cstat-no" title="statement not covered">    exports.RootNode = split_pane_1.RootNode;</span>
+<span class="cstat-no" title="statement not covered">    var tab_1 = require("./components/tabs/tab");</span>
+<span class="cstat-no" title="statement not covered">    exports.Tab = tab_1.Tab;</span>
+<span class="cstat-no" title="statement not covered">    var tab_button_1 = require("./components/tabs/tab-button");</span>
+<span class="cstat-no" title="statement not covered">    exports.TabButton = tab_button_1.TabButton;</span>
+<span class="cstat-no" title="statement not covered">    var tab_highlight_1 = require("./components/tabs/tab-highlight");</span>
+<span class="cstat-no" title="statement not covered">    exports.TabHighlight = tab_highlight_1.TabHighlight;</span>
+<span class="cstat-no" title="statement not covered">    var tabs_1 = require("./components/tabs/tabs");</span>
+<span class="cstat-no" title="statement not covered">    exports.Tabs = tabs_1.Tabs;</span>
+<span class="cstat-no" title="statement not covered">    var tap_click_2 = require("./tap-click/tap-click");</span>
+<span class="cstat-no" title="statement not covered">    exports.TapClick = tap_click_2.TapClick;</span>
+<span class="cstat-no" title="statement not covered">    exports.setupTapClick = tap_click_2.setupTapClick;</span>
+<span class="cstat-no" title="statement not covered">    exports.isActivatable = tap_click_2.isActivatable;</span>
+<span class="cstat-no" title="statement not covered">    var toast_1 = require("./components/toast/toast");</span>
+<span class="cstat-no" title="statement not covered">    exports.Toast = toast_1.Toast;</span>
+<span class="cstat-no" title="statement not covered">    var toast_controller_2 = require("./components/toast/toast-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.ToastController = toast_controller_2.ToastController;</span>
+<span class="cstat-no" title="statement not covered">    var toggle_1 = require("./components/toggle/toggle");</span>
+<span class="cstat-no" title="statement not covered">    exports.Toggle = toggle_1.Toggle;</span>
+<span class="cstat-no" title="statement not covered">    var toolbar_base_1 = require("./components/toolbar/toolbar-base");</span>
+<span class="cstat-no" title="statement not covered">    exports.ToolbarBase = toolbar_base_1.ToolbarBase;</span>
+<span class="cstat-no" title="statement not covered">    var toolbar_1 = require("./components/toolbar/toolbar");</span>
+<span class="cstat-no" title="statement not covered">    exports.Toolbar = toolbar_1.Toolbar;</span>
+<span class="cstat-no" title="statement not covered">    var toolbar_header_1 = require("./components/toolbar/toolbar-header");</span>
+<span class="cstat-no" title="statement not covered">    exports.Header = toolbar_header_1.Header;</span>
+<span class="cstat-no" title="statement not covered">    var toolbar_footer_1 = require("./components/toolbar/toolbar-footer");</span>
+<span class="cstat-no" title="statement not covered">    exports.Footer = toolbar_footer_1.Footer;</span>
+<span class="cstat-no" title="statement not covered">    var toolbar_item_1 = require("./components/toolbar/toolbar-item");</span>
+<span class="cstat-no" title="statement not covered">    exports.ToolbarItem = toolbar_item_1.ToolbarItem;</span>
+<span class="cstat-no" title="statement not covered">    var toolbar_title_1 = require("./components/toolbar/toolbar-title");</span>
+<span class="cstat-no" title="statement not covered">    exports.ToolbarTitle = toolbar_title_1.ToolbarTitle;</span>
+<span class="cstat-no" title="statement not covered">    var thumbnail_1 = require("./components/thumbnail/thumbnail");</span>
+<span class="cstat-no" title="statement not covered">    exports.Thumbnail = thumbnail_1.Thumbnail;</span>
+<span class="cstat-no" title="statement not covered">    var typography_1 = require("./components/typography/typography");</span>
+<span class="cstat-no" title="statement not covered">    exports.Typography = typography_1.Typography;</span>
+<span class="cstat-no" title="statement not covered">    var virtual_scroll_1 = require("./components/virtual-scroll/virtual-scroll");</span>
+<span class="cstat-no" title="statement not covered">    exports.VirtualScroll = virtual_scroll_1.VirtualScroll;</span>
+    /**
+     * Export Providers
+     */
+<span class="cstat-no" title="statement not covered">    var config_2 = require("./config/config");</span>
+<span class="cstat-no" title="statement not covered">    exports.Config = config_2.Config;</span>
+<span class="cstat-no" title="statement not covered">    exports.setupConfig = config_2.setupConfig;</span>
+<span class="cstat-no" title="statement not covered">    exports.ConfigToken = config_2.ConfigToken;</span>
+<span class="cstat-no" title="statement not covered">    var dom_controller_2 = require("./platform/dom-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.DomController = dom_controller_2.DomController;</span>
+<span class="cstat-no" title="statement not covered">    var platform_2 = require("./platform/platform");</span>
+<span class="cstat-no" title="statement not covered">    exports.Platform = platform_2.Platform;</span>
+<span class="cstat-no" title="statement not covered">    exports.setupPlatform = platform_2.setupPlatform;</span>
+<span class="cstat-no" title="statement not covered">    var haptic_2 = require("./tap-click/haptic");</span>
+<span class="cstat-no" title="statement not covered">    exports.Haptic = haptic_2.Haptic;</span>
+<span class="cstat-no" title="statement not covered">    var deep_linker_2 = require("./navigation/deep-linker");</span>
+<span class="cstat-no" title="statement not covered">    exports.DeepLinker = deep_linker_2.DeepLinker;</span>
+<span class="cstat-no" title="statement not covered">    var ionic_page_1 = require("./navigation/ionic-page");</span>
+<span class="cstat-no" title="statement not covered">    exports.IonicPage = ionic_page_1.IonicPage;</span>
+<span class="cstat-no" title="statement not covered">    var nav_controller_1 = require("./navigation/nav-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavController = nav_controller_1.NavController;</span>
+<span class="cstat-no" title="statement not covered">    var nav_controller_base_1 = require("./navigation/nav-controller-base");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavControllerBase = nav_controller_base_1.NavControllerBase;</span>
+<span class="cstat-no" title="statement not covered">    var nav_params_1 = require("./navigation/nav-params");</span>
+<span class="cstat-no" title="statement not covered">    exports.NavParams = nav_params_1.NavParams;</span>
+<span class="cstat-no" title="statement not covered">    var nav_util_1 = require("./navigation/nav-util");</span>
+<span class="cstat-no" title="statement not covered">    exports.DeepLinkMetadata = nav_util_1.DeepLinkMetadata;</span>
+<span class="cstat-no" title="statement not covered">    exports.DeepLinkMetadataFactory = nav_util_1.DeepLinkMetadataFactory;</span>
+<span class="cstat-no" title="statement not covered">    var url_serializer_2 = require("./navigation/url-serializer");</span>
+<span class="cstat-no" title="statement not covered">    exports.UrlSerializer = url_serializer_2.UrlSerializer;</span>
+<span class="cstat-no" title="statement not covered">    exports.DeepLinkConfigToken = url_serializer_2.DeepLinkConfigToken;</span>
+<span class="cstat-no" title="statement not covered">    var view_controller_1 = require("./navigation/view-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.ViewController = view_controller_1.ViewController;</span>
+<span class="cstat-no" title="statement not covered">    var action_sheet_component_1 = require("./components/action-sheet/action-sheet-component");</span>
+<span class="cstat-no" title="statement not covered">    exports.ActionSheetCmp = action_sheet_component_1.ActionSheetCmp;</span>
+<span class="cstat-no" title="statement not covered">    var alert_component_1 = require("./components/alert/alert-component");</span>
+<span class="cstat-no" title="statement not covered">    exports.AlertCmp = alert_component_1.AlertCmp;</span>
+<span class="cstat-no" title="statement not covered">    var loading_component_1 = require("./components/loading/loading-component");</span>
+<span class="cstat-no" title="statement not covered">    exports.LoadingCmp = loading_component_1.LoadingCmp;</span>
+<span class="cstat-no" title="statement not covered">    var modal_component_1 = require("./components/modal/modal-component");</span>
+<span class="cstat-no" title="statement not covered">    exports.ModalCmp = modal_component_1.ModalCmp;</span>
+<span class="cstat-no" title="statement not covered">    var picker_component_1 = require("./components/picker/picker-component");</span>
+<span class="cstat-no" title="statement not covered">    exports.PickerCmp = picker_component_1.PickerCmp;</span>
+<span class="cstat-no" title="statement not covered">    var picker_column_1 = require("./components/picker/picker-column");</span>
+<span class="cstat-no" title="statement not covered">    exports.PickerColumnCmp = picker_column_1.PickerColumnCmp;</span>
+<span class="cstat-no" title="statement not covered">    var popover_component_1 = require("./components/popover/popover-component");</span>
+<span class="cstat-no" title="statement not covered">    exports.PopoverCmp = popover_component_1.PopoverCmp;</span>
+<span class="cstat-no" title="statement not covered">    var toast_component_1 = require("./components/toast/toast-component");</span>
+<span class="cstat-no" title="statement not covered">    exports.ToastCmp = toast_component_1.ToastCmp;</span>
+    /**
+     * Export Utils
+     */
+<span class="cstat-no" title="statement not covered">    var drag_gesture_1 = require("./gestures/drag-gesture");</span>
+<span class="cstat-no" title="statement not covered">    exports.PanGesture = drag_gesture_1.PanGesture;</span>
+<span class="cstat-no" title="statement not covered">    var gesture_1 = require("./gestures/gesture");</span>
+<span class="cstat-no" title="statement not covered">    exports.Gesture = gesture_1.Gesture;</span>
+<span class="cstat-no" title="statement not covered">    var slide_edge_gesture_1 = require("./gestures/slide-edge-gesture");</span>
+<span class="cstat-no" title="statement not covered">    exports.SlideEdgeGesture = slide_edge_gesture_1.SlideEdgeGesture;</span>
+<span class="cstat-no" title="statement not covered">    var slide_gesture_1 = require("./gestures/slide-gesture");</span>
+<span class="cstat-no" title="statement not covered">    exports.SlideGesture = slide_gesture_1.SlideGesture;</span>
+<span class="cstat-no" title="statement not covered">    var gesture_controller_2 = require("./gestures/gesture-controller");</span>
+<span class="cstat-no" title="statement not covered">    exports.BLOCK_ALL = gesture_controller_2.BLOCK_ALL;</span>
+<span class="cstat-no" title="statement not covered">    exports.GESTURE_GO_BACK_SWIPE = gesture_controller_2.GESTURE_GO_BACK_SWIPE;</span>
+<span class="cstat-no" title="statement not covered">    exports.GESTURE_MENU_SWIPE = gesture_controller_2.GESTURE_MENU_SWIPE;</span>
+<span class="cstat-no" title="statement not covered">    exports.GESTURE_ITEM_SWIPE = gesture_controller_2.GESTURE_ITEM_SWIPE;</span>
+<span class="cstat-no" title="statement not covered">    exports.GESTURE_REFRESHER = gesture_controller_2.GESTURE_REFRESHER;</span>
+<span class="cstat-no" title="statement not covered">    exports.GESTURE_TOGGLE = gesture_controller_2.GESTURE_TOGGLE;</span>
+<span class="cstat-no" title="statement not covered">    exports.GestureController = gesture_controller_2.GestureController;</span>
+<span class="cstat-no" title="statement not covered">    exports.GestureDelegate = gesture_controller_2.GestureDelegate;</span>
+<span class="cstat-no" title="statement not covered">    exports.BlockerDelegate = gesture_controller_2.BlockerDelegate;</span>
+<span class="cstat-no" title="statement not covered">    var events_2 = require("./util/events");</span>
+<span class="cstat-no" title="statement not covered">    exports.Events = events_2.Events;</span>
+<span class="cstat-no" title="statement not covered">    exports.setupEvents = events_2.setupEvents;</span>
+<span class="cstat-no" title="statement not covered">    exports.setupProvideEvents = events_2.setupProvideEvents;</span>
+<span class="cstat-no" title="statement not covered">    var ionic_error_handler_1 = require("./util/ionic-error-handler");</span>
+<span class="cstat-no" title="statement not covered">    exports.IonicErrorHandler = ionic_error_handler_1.IonicErrorHandler;</span>
+<span class="cstat-no" title="statement not covered">    var keyboard_2 = require("./platform/keyboard");</span>
+<span class="cstat-no" title="statement not covered">    exports.Keyboard = keyboard_2.Keyboard;</span>
+<span class="cstat-no" title="statement not covered">    var form_2 = require("./util/form");</span>
+<span class="cstat-no" title="statement not covered">    exports.Form = form_2.Form;</span>
+<span class="cstat-no" title="statement not covered">    exports.IonicFormInput = form_2.IonicFormInput;</span>
+<span class="cstat-no" title="statement not covered">    exports.IonicTapInput = form_2.IonicTapInput;</span>
+<span class="cstat-no" title="statement not covered">    var util_1 = require("./util/util");</span>
+<span class="cstat-no" title="statement not covered">    exports.reorderArray = util_1.reorderArray;</span>
+<span class="cstat-no" title="statement not covered">    var animation_1 = require("./animations/animation");</span>
+<span class="cstat-no" title="statement not covered">    exports.Animation = animation_1.Animation;</span>
+<span class="cstat-no" title="statement not covered">    var page_transition_1 = require("./transitions/page-transition");</span>
+<span class="cstat-no" title="statement not covered">    exports.PageTransition = page_transition_1.PageTransition;</span>
+<span class="cstat-no" title="statement not covered">    var transition_1 = require("./transitions/transition");</span>
+<span class="cstat-no" title="statement not covered">    exports.Transition = transition_1.Transition;</span>
+<span class="cstat-no" title="statement not covered">    var platform_registry_2 = require("./platform/platform-registry");</span>
+<span class="cstat-no" title="statement not covered">    exports.PlatformConfigToken = platform_registry_2.PlatformConfigToken;</span>
+<span class="cstat-no" title="statement not covered">    var mode_registry_2 = require("./config/mode-registry");</span>
+<span class="cstat-no" title="statement not covered">    exports.registerModeConfigs = mode_registry_2.registerModeConfigs;</span>
+<span class="cstat-no" title="statement not covered">    var gesture_config_1 = require("./gestures/gesture-config");</span>
+<span class="cstat-no" title="statement not covered">    exports.IonicGestureConfig = gesture_config_1.IonicGestureConfig;</span>
+    /**
+     * \@name IonicModule
+     * \@description
+     * IonicModule is an [NgModule](https://angular.io/docs/ts/latest/guide/ngmodule.html) that bootstraps
+     * an Ionic App. By passing a root component, IonicModule will make sure that all of the components,
+     * directives, and providers from the framework are imported.
+     *
+     * Any configuration for the app can be passed as the second argument to `forRoot`. This can be any
+     * valid property from the [Config](/docs/api/config/Config/).
+     *
+     * \@usage
+     * ```ts
+     * import { NgModule } from '\@angular/core';
+     *
+     * import { IonicApp, IonicModule } from 'ionic-angular';
+     *
+     * import { MyApp } from './app.component';
+     * import { HomePage } from '../pages/home/home';
+     *
+     * \@NgModule({
+     *   declarations: [
+     *     MyApp,
+     *     HomePage
+     *   ],
+     *   imports: [
+     *     BrowserModule,
+     *     IonicModule.forRoot(MyApp, {
+     *
+     *     })
+     *   ],
+     *   bootstrap: [IonicApp],
+     *   entryComponents: [
+     *     MyApp,
+     *     HomePage
+     *   ],
+     *   providers: []
+     * })
+     * export class AppModule {}
+     * ```
+     */
+<span class="cstat-no" title="statement not covered">    var IonicModule = (<span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="fstat-no" title="function not covered">        function IonicModule() {</span>
+        }
+        /**
+         * Set the root app component for you IonicModule
+         * @param {?} appRoot
+         * @param {?=} config
+         * @param {?=} deepLinkConfig
+         * @return {?}
+         */
+<span class="cstat-no" title="statement not covered">        IonicModule.forRoot = <span class="fstat-no" title="function not covered">function (appRoot, config, deepLinkConfig) {</span></span>
+<span class="cstat-no" title="statement not covered">            if (config === void 0) { <span class="cstat-no" title="statement not covered">config = null; </span>}</span>
+<span class="cstat-no" title="statement not covered">            if (deepLinkConfig === void 0) { <span class="cstat-no" title="statement not covered">deepLinkConfig = null; </span>}</span>
+<span class="cstat-no" title="statement not covered">            return {</span>
+                ngModule: IonicModule,
+                providers: [
+                    // useValue: bootstrap values
+                    { provide: app_root_1.AppRootToken, useValue: appRoot },
+                    { provide: config_1.ConfigToken, useValue: config },
+                    { provide: url_serializer_1.DeepLinkConfigToken, useValue: deepLinkConfig },
+                    { provide: common_1.APP_BASE_HREF, useValue: '/' },
+                    // useFactory: user values
+                    { provide: platform_registry_1.PlatformConfigToken, useFactory: platform_registry_1.providePlatformConfigs },
+                    // useFactory: ionic core providers
+                    { provide: platform_1.Platform, useFactory: platform_1.setupPlatform, deps: [platform_browser_1.DOCUMENT, platform_registry_1.PlatformConfigToken, core_1.NgZone] },
+                    { provide: config_1.Config, useFactory: config_1.setupConfig, deps: [config_1.ConfigToken, platform_1.Platform] },
+                    // useFactory: ionic app initializers
+                    { provide: core_1.APP_INITIALIZER, useFactory: mode_registry_1.registerModeConfigs, deps: [config_1.Config], multi: true },
+                    { provide: core_1.APP_INITIALIZER, useFactory: events_1.setupProvideEvents, deps: [platform_1.Platform, dom_controller_1.DomController], multi: true },
+                    { provide: core_1.APP_INITIALIZER, useFactory: tap_click_1.setupTapClick, deps: [config_1.Config, platform_1.Platform, dom_controller_1.DomController, app_1.App, core_1.NgZone, gesture_controller_1.GestureController], multi: true },
+                    { provide: core_1.APP_INITIALIZER, useFactory: module_loader_1.setupPreloading, deps: [config_1.Config, url_serializer_1.DeepLinkConfigToken, module_loader_1.ModuleLoader, core_1.NgZone], multi: true },
+                    // useClass
+                    // { provide: HAMMER_GESTURE_CONFIG, useClass: IonicGestureConfig },
+                    // useValue
+                    { provide: core_1.ANALYZE_FOR_ENTRY_COMPONENTS, useValue: appRoot, multi: true },
+                    // ionic providers
+                    action_sheet_controller_1.ActionSheetController,
+                    alert_controller_1.AlertController,
+                    app_1.App,
+                    dom_controller_1.DomController,
+                    events_1.Events,
+                    form_1.Form,
+                    gesture_controller_1.GestureController,
+                    haptic_1.Haptic,
+                    keyboard_1.Keyboard,
+                    loading_controller_1.LoadingController,
+                    common_1.Location,
+                    menu_controller_1.MenuController,
+                    modal_controller_1.ModalController,
+                    picker_controller_1.PickerController,
+                    popover_controller_1.PopoverController,
+                    ng_module_loader_1.NgModuleLoader,
+                    tap_click_1.TapClick,
+                    toast_controller_1.ToastController,
+                    transition_controller_1.TransitionController,
+                    { provide: module_loader_1.ModuleLoader, useFactory: module_loader_1.provideModuleLoader, deps: [ng_module_loader_1.NgModuleLoader, core_1.Injector] },
+                    { provide: common_1.LocationStrategy, useFactory: provideLocationStrategy, deps: [common_1.PlatformLocation, [new core_1.Inject(common_1.APP_BASE_HREF), new core_1.Optional()], config_1.Config] },
+                    { provide: url_serializer_1.UrlSerializer, useFactory: url_serializer_1.setupUrlSerializer, deps: [url_serializer_1.DeepLinkConfigToken] },
+                    { provide: deep_linker_1.DeepLinker, useFactory: deep_linker_1.setupDeepLinker, deps: [app_1.App, url_serializer_1.UrlSerializer, common_1.Location, module_loader_1.ModuleLoader, core_1.ComponentFactoryResolver] },
+                ]
+            };
+        };
+<span class="cstat-no" title="statement not covered">        return IonicModule;</span>
+    }());
+<span class="cstat-no" title="statement not covered">    IonicModule.decorators = [</span>
+        { type: core_1.NgModule, args: [{
+                    imports: [
+                        common_2.CommonModule,
+                        forms_1.FormsModule,
+                        forms_1.ReactiveFormsModule,
+                        action_sheet_module_1.ActionSheetModule.forRoot(),
+                        alert_module_1.AlertModule.forRoot(),
+                        app_module_1.AppModule.forRoot(),
+                        avatar_module_1.AvatarModule.forRoot(),
+                        backdrop_module_1.BackdropModule.forRoot(),
+                        badge_module_1.BadgeModule.forRoot(),
+                        button_module_1.ButtonModule.forRoot(),
+                        card_module_1.CardModule.forRoot(),
+                        checkbox_module_1.CheckboxModule.forRoot(),
+                        chip_module_1.ChipModule.forRoot(),
+                        click_block_module_1.ClickBlockModule.forRoot(),
+                        content_module_1.ContentModule.forRoot(),
+                        datetime_module_1.DateTimeModule.forRoot(),
+                        fab_module_1.FabModule.forRoot(),
+                        grid_module_1.GridModule.forRoot(),
+                        icon_module_1.IconModule.forRoot(),
+                        img_module_1.ImgModule.forRoot(),
+                        infinite_scroll_module_1.InfiniteScrollModule.forRoot(),
+                        input_module_1.InputModule.forRoot(),
+                        item_module_1.ItemModule.forRoot(),
+                        label_module_1.LabelModule.forRoot(),
+                        list_module_1.ListModule.forRoot(),
+                        loading_module_1.LoadingModule.forRoot(),
+                        menu_module_1.MenuModule.forRoot(),
+                        modal_module_1.ModalModule.forRoot(),
+                        nav_module_1.NavModule.forRoot(),
+                        navbar_module_1.NavbarModule.forRoot(),
+                        note_module_1.NoteModule.forRoot(),
+                        option_module_1.OptionModule.forRoot(),
+                        picker_module_1.PickerModule.forRoot(),
+                        popover_module_1.PopoverModule.forRoot(),
+                        radio_module_1.RadioModule.forRoot(),
+                        range_module_1.RangeModule.forRoot(),
+                        refresher_module_1.RefresherModule.forRoot(),
+                        scroll_module_1.ScrollModule.forRoot(),
+                        searchbar_module_1.SearchbarModule.forRoot(),
+                        segment_module_1.SegmentModule.forRoot(),
+                        select_module_1.SelectModule.forRoot(),
+                        show_hide_when_module_1.ShowHideWhenModule.forRoot(),
+                        slides_module_1.SlidesModule.forRoot(),
+                        spinner_module_1.SpinnerModule.forRoot(),
+                        split_pane_module_1.SplitPaneModule.forRoot(),
+                        tabs_module_1.TabsModule.forRoot(),
+                        thumbnail_module_1.ThumbnailModule.forRoot(),
+                        toast_module_1.ToastModule.forRoot(),
+                        toggle_module_1.ToggleModule.forRoot(),
+                        toolbar_module_1.ToolbarModule.forRoot(),
+                        typography_module_1.TypographyModule.forRoot(),
+                        virtual_scroll_module_1.VirtualScrollModule.forRoot()
+                    ],
+                    exports: [
+                        common_2.CommonModule,
+                        forms_1.FormsModule,
+                        forms_1.ReactiveFormsModule,
+                        action_sheet_module_1.ActionSheetModule,
+                        alert_module_1.AlertModule,
+                        app_module_1.AppModule,
+                        avatar_module_1.AvatarModule,
+                        backdrop_module_1.BackdropModule,
+                        badge_module_1.BadgeModule,
+                        button_module_1.ButtonModule,
+                        card_module_1.CardModule,
+                        checkbox_module_1.CheckboxModule,
+                        chip_module_1.ChipModule,
+                        click_block_module_1.ClickBlockModule,
+                        content_module_1.ContentModule,
+                        datetime_module_1.DateTimeModule,
+                        fab_module_1.FabModule,
+                        grid_module_1.GridModule,
+                        icon_module_1.IconModule,
+                        img_module_1.ImgModule,
+                        infinite_scroll_module_1.InfiniteScrollModule,
+                        input_module_1.InputModule,
+                        item_module_1.ItemModule,
+                        label_module_1.LabelModule,
+                        list_module_1.ListModule,
+                        loading_module_1.LoadingModule,
+                        menu_module_1.MenuModule,
+                        modal_module_1.ModalModule,
+                        nav_module_1.NavModule,
+                        navbar_module_1.NavbarModule,
+                        note_module_1.NoteModule,
+                        option_module_1.OptionModule,
+                        picker_module_1.PickerModule,
+                        popover_module_1.PopoverModule,
+                        radio_module_1.RadioModule,
+                        range_module_1.RangeModule,
+                        refresher_module_1.RefresherModule,
+                        scroll_module_1.ScrollModule,
+                        searchbar_module_1.SearchbarModule,
+                        segment_module_1.SegmentModule,
+                        select_module_1.SelectModule,
+                        show_hide_when_module_1.ShowHideWhenModule,
+                        slides_module_1.SlidesModule,
+                        spinner_module_1.SpinnerModule,
+                        split_pane_module_1.SplitPaneModule,
+                        tabs_module_1.TabsModule,
+                        thumbnail_module_1.ThumbnailModule,
+                        toast_module_1.ToastModule,
+                        toggle_module_1.ToggleModule,
+                        toolbar_module_1.ToolbarModule,
+                        typography_module_1.TypographyModule,
+                        virtual_scroll_module_1.VirtualScrollModule
+                    ]
+                },] },
+    ];
+    /**
+     * @nocollapse
+     */
+<span class="cstat-no" title="statement not covered">    IonicModule.ctorParameters = <span class="fstat-no" title="function not covered">function () {</span> <span class="cstat-no" title="statement not covered">return []; </span>};</span>
+<span class="cstat-no" title="statement not covered">    exports.IonicModule = IonicModule;</span>
+<span class="fstat-no" title="function not covered">    function IonicModule_tsickle_Closure_declarations() {</span>
+        /** @type {?} */
+<span class="cstat-no" title="statement not covered">        IonicModule.decorators;</span>
+        /**
+         * @nocollapse
+         * @type {?}
+         */
+<span class="cstat-no" title="statement not covered">        IonicModule.ctorParameters;</span>
+    }
+    /**
+     * \@name IonicPageModule
+     * \@description
+     * IonicPageModule is an [NgModule](https://angular.io/docs/ts/latest/guide/ngmodule.html) that
+     * bootstraps a child [IonicPage](../navigation/IonicPage/) in order to set up routing.
+     *
+     * \@usage
+     * ```ts
+     * import { NgModule } from '\@angular/core';
+     *
+     * import { IonicPageModule } from 'ionic-angular';
+     *
+     * import { HomePage } from './home';
+     *
+     * \@NgModule({
+     * 	declarations: [
+     * 		HomePage
+     * 	],
+     * 	imports: [
+     * 		IonicPageModule.forChild(HomePage)
+     * 	],
+     * 	entryComponents: [
+     * 		HomePage
+     * 	]
+     * })
+     * export class HomePageModule { }
+     * ```
+     */
+<span class="cstat-no" title="statement not covered">    var IonicPageModule = (<span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="fstat-no" title="function not covered">        function IonicPageModule() {</span>
+        }
+        /**
+         * @param {?} page
+         * @return {?}
+         */
+<span class="cstat-no" title="statement not covered">        IonicPageModule.forChild = <span class="fstat-no" title="function not covered">function (page) {</span></span>
+<span class="cstat-no" title="statement not covered">            return {</span>
+                ngModule: IonicPageModule,
+                providers: [
+                    { provide: /** @type {?} */ (module_loader_1.LAZY_LOADED_TOKEN), useValue: page },
+                    { provide: core_1.ANALYZE_FOR_ENTRY_COMPONENTS, useValue: page, multi: true },
+                ]
+            };
+        };
+<span class="cstat-no" title="statement not covered">        return IonicPageModule;</span>
+    }());
+<span class="cstat-no" title="statement not covered">    IonicPageModule.decorators = [</span>
+        { type: core_1.NgModule, args: [{
+                    imports: [IonicModule],
+                    exports: [IonicModule]
+                },] },
+    ];
+    /**
+     * @nocollapse
+     */
+<span class="cstat-no" title="statement not covered">    IonicPageModule.ctorParameters = <span class="fstat-no" title="function not covered">function () {</span> <span class="cstat-no" title="statement not covered">return []; </span>};</span>
+<span class="cstat-no" title="statement not covered">    exports.IonicPageModule = IonicPageModule;</span>
+<span class="fstat-no" title="function not covered">    function IonicPageModule_tsickle_Closure_declarations() {</span>
+        /** @type {?} */
+<span class="cstat-no" title="statement not covered">        IonicPageModule.decorators;</span>
+        /**
+         * @nocollapse
+         * @type {?}
+         */
+<span class="cstat-no" title="statement not covered">        IonicPageModule.ctorParameters;</span>
+    }
+    /**
+     * @hidden
+     * @param {?} platformLocationStrategy
+     * @param {?} baseHref
+     * @param {?} config
+     * @return {?}
+     */
+<span class="fstat-no" title="function not covered">    function provideLocationStrategy(platformLocationStrategy, baseHref, config) {</span>
+<span class="cstat-no" title="statement not covered">        return config.get('locationStrategy') === 'path' ?</span>
+            new common_1.PathLocationStrategy(platformLocationStrategy, baseHref) :
+            new common_1.HashLocationStrategy(platformLocationStrategy, baseHref);
+    }
+<span class="cstat-no" title="statement not covered">    exports.provideLocationStrategy = provideLocationStrategy;</span>
+});
+//# sourceMappingURL=index.js.map
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Wed Apr 19 2017 21:38:12 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>

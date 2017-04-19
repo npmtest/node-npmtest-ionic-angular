@@ -1,0 +1,19 @@
+<svg height="254" width="720" xmlns="http://www.w3.org/2000/svg">
+<rect height="254" fill="#555" width="720"></rect>
+<text fill="#7f7" font-family="Courier New" font-size="12" xml:space="preserve">
+<tspan x="10" y="26">31 megabytes installed</tspan>
+<tspan x="10" y="42"></tspan>
+<tspan x="10" y="58">node_modules</tspan>
+<tspan x="10" y="74">├── UNMET PEER DEPENDENCY @angular/common@4.0.0</tspan>
+<tspan x="10" y="90">├── UNMET PEER DEPENDENCY @angular/compiler@4.0.0</tspan>
+<tspan x="10" y="106">├── UNMET PEER DEPENDENCY @angular/compiler-cli@4.0.0</tspan>
+<tspan x="10" y="122">├── UNMET PEER DEPENDENCY @angular/core@4.0.0</tspan>
+<tspan x="10" y="138">├── UNMET PEER DEPENDENCY @angular/forms@4.0.0</tspan>
+<tspan x="10" y="154">├── UNMET PEER DEPENDENCY @angular/http@4.0.0</tspan>
+<tspan x="10" y="170">├── UNMET PEER DEPENDENCY @angular/platform-browser@4.0.0</tspan>
+<tspan x="10" y="186">├── UNMET PEER DEPENDENCY @angular/platform-browser-dynamic@4.0.0</tspan>
+<tspan x="10" y="202">├── ionic-angular@3.0.1 </tspan>
+<tspan x="10" y="218">├── UNMET PEER DEPENDENCY rxjs@5.1.1</tspan>
+<tspan x="10" y="234">└── UNMET PEER DEPENDENCY zone.js@^0.8.4</tspan>
+</text>
+</svg>
